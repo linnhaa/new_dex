@@ -1,0 +1,17 @@
+name: 'Smart Contract Vulnerabilities'
+
+on:
+  pull_request:
+    types: [opened, synchronize]
+
+jobs:
+  setup:
+    name: Run
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Run Solana AI Smart Contract Audit
+        uses: solanaizer/solanaizer-action@0.1.11
+        with:
+          openapi-token: ${{ secrets.OPENAPI_TOKEN }}
